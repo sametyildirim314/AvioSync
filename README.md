@@ -1,4 +1,4 @@
-# AvioSync - Platform Arayüzleri Geliştirme Vaka Çalışması
+# AvioSync - Platform Arayüzleri Geliştirme Projesi
 
 Bu proje, bir gömülü sistem (aviyonik) simülasyonu ile kullanıcı arayüzü arasında çift yönlü, gerçek zamanlı veri haberleşmesini sağlamak ve bu iletişimi otonom test scriptleri ile doğrulamak amacıyla geliştirilmiştir. 
 
