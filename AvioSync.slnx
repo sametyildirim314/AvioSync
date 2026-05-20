@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="KullaniciArayuzu/KullaniciArayuzu.csproj" />
+  <Project Path="OrtakKutuphane/OrtakKutuphane.csproj" />
+  <Project Path="SimulasyonArayuzu/SimulasyonArayuzu.csproj" />
+</Solution>
