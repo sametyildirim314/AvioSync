@@ -22,3 +22,4 @@ C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\SimulasyonArayuzu\
 C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\SimulasyonArayuzu\obj\Debug\net10.0-windows\SimulasyonArayuzu.pdb
 C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\SimulasyonArayuzu\obj\Debug\net10.0-windows\SimulasyonArayuzu.genruntimeconfig.cache
 C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\SimulasyonArayuzu\obj\Debug\net10.0-windows\ref\SimulasyonArayuzu.dll
+C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\SimulasyonArayuzu\obj\Debug\net10.0-windows\SimulasyonArayuzu.sourcelink.json

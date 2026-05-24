@@ -5,7 +5,7 @@ namespace OrtakKutuphane.Modeller;
 
 // Kullanıcı arayüzünden aviyoniğe gönderilen tek bytelık komut paketi.
 // Toplam veri boyutu 1 byte olup, komut tipi KomutTipi enum'u ile ifade edilir.
-[StructLayout(LayoutKind.Sequential, Pack = 1)]
+[StructLayout(LayoutKind.Sequential, Pack = 1)] // bu satır, struct'ın bellekte nasıl sıralanacağını belirler. Pack = 1, her bir field'ın byte'ının başına padding eklenmeyecek.
 public struct KomutPaket
 {
     // Gönderilen komutun türü.

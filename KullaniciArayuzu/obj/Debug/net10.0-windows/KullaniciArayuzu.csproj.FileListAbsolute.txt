@@ -22,3 +22,4 @@ C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\o
 C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\obj\Debug\net10.0-windows\KullaniciArayuzu.pdb
 C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\obj\Debug\net10.0-windows\KullaniciArayuzu.genruntimeconfig.cache
 C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\obj\Debug\net10.0-windows\ref\KullaniciArayuzu.dll
+C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\obj\Debug\net10.0-windows\KullaniciArayuzu.sourcelink.json

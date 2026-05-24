@@ -9,3 +9,4 @@ C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\OrtakKutuphane\obj
 C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\OrtakKutuphane\obj\Debug\net10.0\refint\OrtakKutuphane.dll
 C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\OrtakKutuphane\obj\Debug\net10.0\OrtakKutuphane.pdb
 C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\OrtakKutuphane\obj\Debug\net10.0\ref\OrtakKutuphane.dll
+C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\OrtakKutuphane\obj\Debug\net10.0\OrtakKutuphane.sourcelink.json
