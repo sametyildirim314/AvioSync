@@ -2,7 +2,7 @@
 
 Bu proje, bir gömülü sistem (aviyonik) simülasyonu ile kullanıcı arayüzü arasında çift yönlü, gerçek zamanlı veri haberleşmesini sağlamak ve bu iletişimi otonom test scriptleri ile doğrulamak amacıyla geliştirilmiştir. 
 
-Proje, nesne yönelimli programlama (OOP), SOLID, DRY, KISS ve YAGNI prensipleri gözetilerek **.NET 8** ve **C# 12** teknolojileriyle inşa edilmiştir.
+Proje, nesne yönelimli programlama (OOP), SOLID, DRY, KISS ve YAGNI prensipleri gözetilerek **.NET 10** ve **C# 12** teknolojileriyle inşa edilmiştir.
 
 ## 🚀 Teknolojiler ve Mimari
 * **Platform:** .NET 10
