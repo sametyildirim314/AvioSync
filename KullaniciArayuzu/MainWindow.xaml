@@ -51,14 +51,53 @@
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
 
-        <!-- Giriş kutusu (TextBox / ComboBox) -->
-        <Style x:Key="GirisStili" TargetType="Control">
+        <!-- TextBox giriş stili -->
+        <Style x:Key="GirisStili" TargetType="TextBox">
             <Setter Property="Background" Value="{StaticResource GirisArkaPlan}"/>
             <Setter Property="Foreground" Value="#E6EDF3"/>
             <Setter Property="BorderBrush" Value="{StaticResource PanelKenar}"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Padding" Value="6,4"/>
             <Setter Property="MinHeight" Value="30"/>
+            <Setter Property="CaretBrush" Value="#E6EDF3"/>
+        </Style>
+
+        <!-- ComboBox açılır liste öğesi (koyu arka plan + açık metin) -->
+        <Style x:Key="ComboBoxOgeStili" TargetType="ComboBoxItem">
+            <Setter Property="Background" Value="#0B1422"/>
+            <Setter Property="Foreground" Value="#E6EDF3"/>
+            <Setter Property="Padding" Value="10,7"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Style.Triggers>
+                <Trigger Property="IsHighlighted" Value="True">
+                    <Setter Property="Background" Value="#1E3A6B"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#1E3A6B"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- ComboBox: kapalı alan + açılır liste koyu temaya uyumlu -->
+        <Style x:Key="ComboBoxStili" TargetType="ComboBox">
+            <Setter Property="Background" Value="{StaticResource GirisArkaPlan}"/>
+            <Setter Property="Foreground" Value="#E6EDF3"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PanelKenar}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="6,4"/>
+            <Setter Property="MinHeight" Value="30"/>
+            <Setter Property="ItemContainerStyle" Value="{StaticResource ComboBoxOgeStili}"/>
+            <!-- Açılır liste popup'ı varsayılan beyaz yerine koyu tema renkleri kullanır -->
+            <Style.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#0B1422"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.WindowTextBrushKey}" Color="#E6EDF3"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#1E3A6B"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FFFFFF"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="#0B1422"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="#E6EDF3"/>
+            </Style.Resources>
         </Style>
 
         <!-- Buton -->
@@ -250,7 +289,7 @@
                     <TextBlock Text="KOMUT GÖNDER" Style="{StaticResource BaslikStili}"/>
                     <ComboBox x:Name="cbKomut"
                               AutomationProperties.AutomationId="cbKomut"
-                              Style="{StaticResource GirisStili}"
+                              Style="{StaticResource ComboBoxStili}"
                               Margin="0,2,0,8"/>
                     <Button x:Name="btnKomutGonder" Content="KOMUT GÖNDER"
                             AutomationProperties.AutomationId="btnKomutGonder"
@@ -273,7 +312,7 @@
                             <TextBlock Text="Ayar Tipi" Style="{StaticResource EtiketStili}" Margin="0,0,0,2"/>
                             <ComboBox x:Name="cbAyar"
                                       AutomationProperties.AutomationId="cbAyar"
-                                      Style="{StaticResource GirisStili}"/>
+                                      Style="{StaticResource ComboBoxStili}"/>
                         </StackPanel>
                         <StackPanel Grid.Column="1" Margin="6,0,0,0">
                             <TextBlock Text="Değer" Style="{StaticResource EtiketStili}" Margin="0,0,0,2"/>
