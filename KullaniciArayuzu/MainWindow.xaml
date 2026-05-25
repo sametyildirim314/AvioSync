@@ -5,8 +5,414 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KullaniciArayuzu"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="AvioSync - Kullanıcı Arayüzü"
+        Height="800" Width="1280"
+        MinHeight="720" MinWidth="1100"
+        WindowStartupLocation="CenterScreen"
+        Background="#0E1726"
+        FontFamily="Segoe UI"
+        Foreground="#E6EDF3">
 
+    <Window.Resources>
+        <SolidColorBrush x:Key="PanelArkaPlan"  Color="#152234"/>
+        <SolidColorBrush x:Key="PanelKenar"     Color="#22304A"/>
+        <SolidColorBrush x:Key="VurguMavi"      Color="#3D8BFD"/>
+        <SolidColorBrush x:Key="VurguYesil"     Color="#22C55E"/>
+        <SolidColorBrush x:Key="VurguKirmizi"   Color="#EF4444"/>
+        <SolidColorBrush x:Key="VurguSari"      Color="#FACC15"/>
+        <SolidColorBrush x:Key="YumusakYazi"    Color="#94A3B8"/>
+        <SolidColorBrush x:Key="GirisArkaPlan"  Color="#0B1422"/>
+
+        <Style x:Key="PanelStili" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource PanelArkaPlan}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PanelKenar}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="12"/>
+            <Setter Property="Margin" Value="6"/>
+        </Style>
+
+        <Style x:Key="BaslikStili" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource YumusakYazi}"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,0,0,6"/>
+        </Style>
+
+        <Style x:Key="EtiketStili" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource YumusakYazi}"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="DegerBuyuk" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#E6EDF3"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <!-- Giriş kutusu (TextBox / ComboBox) -->
+        <Style x:Key="GirisStili" TargetType="Control">
+            <Setter Property="Background" Value="{StaticResource GirisArkaPlan}"/>
+            <Setter Property="Foreground" Value="#E6EDF3"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PanelKenar}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="6,4"/>
+            <Setter Property="MinHeight" Value="30"/>
+        </Style>
+
+        <!-- Buton -->
+        <Style x:Key="AnaButon" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource VurguMavi}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="12,7"/>
+            <Setter Property="MinHeight" Value="32"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="kenar" Background="{TemplateBinding Background}"
+                                CornerRadius="6"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="kenar" Property="Opacity" Value="0.85"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="kenar" Property="Opacity" Value="0.4"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- DataGrid -->
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="{StaticResource GirisArkaPlan}"/>
+            <Setter Property="Foreground" Value="#E6EDF3"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PanelKenar}"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#1F2C44"/>
+            <Setter Property="RowBackground" Value="#0F1B2D"/>
+            <Setter Property="AlternatingRowBackground" Value="#142235"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="AutoGenerateColumns" Value="True"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="CanUserDeleteRows" Value="False"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#1B2A45"/>
+            <Setter Property="Foreground" Value="{StaticResource YumusakYazi}"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PanelKenar}"/>
+            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="Foreground" Value="#E6EDF3"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#1E3A6B"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background" Value="#0F1B2D"/>
+            <Setter Property="Foreground" Value="#E6EDF3"/>
+        </Style>
+
+        <Style TargetType="TabControl">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+
+        <Style TargetType="TabItem">
+            <Setter Property="Background" Value="#1B2A45"/>
+            <Setter Property="Foreground" Value="#94A3B8"/>
+            <Setter Property="Padding" Value="14,8"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Border x:Name="kenar" Background="{TemplateBinding Background}"
+                                CornerRadius="6,6,0,0"
+                                Margin="0,0,2,0"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter ContentSource="Header"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="kenar" Property="Background" Value="{StaticResource VurguMavi}"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="kenar" Property="Opacity" Value="0.9"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <!-- Üst başlık + bağlantı + sayaçlar -->
+            <RowDefinition Height="Auto"/> <!-- Komut + Ayar + Geri besleme -->
+            <RowDefinition Height="*"/>    <!-- Telemetri tabloları -->
+            <RowDefinition Height="Auto"/> <!-- Loglama + Oynatma + MAT -->
+        </Grid.RowDefinitions>
+
+        <!-- ÜST ŞERİT: Başlık + Bağlantı + Sayaçlar -->
+        <Border Grid.Row="0" Style="{StaticResource PanelStili}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="AVIOSYNC - KULLANICI ARAYÜZÜ"
+                               FontSize="20" FontWeight="Bold"
+                               Foreground="{StaticResource VurguMavi}"/>
+                    <TextBlock x:Name="txtBaglantiBilgisi"
+                               Text="UDP Dinleme: 0.0.0.0:5001 | Hedef: 127.0.0.1:5002"
+                               Foreground="{StaticResource YumusakYazi}"
+                               FontSize="12" Margin="0,4,0,0"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="20,0" VerticalAlignment="Center">
+                    <TextBlock Text="DOĞRU PAKET" Style="{StaticResource BaslikStili}" Margin="0"/>
+                    <TextBlock x:Name="txtDogruSayac" Text="0"
+                               AutomationProperties.AutomationId="txtDogruSayac"
+                               Style="{StaticResource DegerBuyuk}"
+                               Foreground="{StaticResource VurguYesil}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Vertical" Margin="20,0" VerticalAlignment="Center">
+                    <TextBlock Text="HATALI PAKET" Style="{StaticResource BaslikStili}" Margin="0"/>
+                    <TextBlock x:Name="txtHataliSayac" Text="0"
+                               AutomationProperties.AutomationId="txtHataliSayac"
+                               Style="{StaticResource DegerBuyuk}"
+                               Foreground="{StaticResource VurguKirmizi}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center" Margin="20,0,0,0">
+                    <Button x:Name="btnBaglan" Content="BAĞLAN"
+                            AutomationProperties.AutomationId="btnBaglan"
+                            Style="{StaticResource AnaButon}"
+                            Background="{StaticResource VurguYesil}"
+                            Click="BtnBaglan_Click" Margin="0,0,6,0"/>
+                    <Button x:Name="btnKes" Content="BAĞLANTIYI KES"
+                            AutomationProperties.AutomationId="btnKes"
+                            Style="{StaticResource AnaButon}"
+                            Background="{StaticResource VurguKirmizi}"
+                            Click="BtnKes_Click" IsEnabled="False"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- KOMUT + AYAR + GERİ BESLEME -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1.2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- KOMUT GÖNDER -->
+            <Border Grid.Column="0" Style="{StaticResource PanelStili}">
+                <StackPanel>
+                    <TextBlock Text="KOMUT GÖNDER" Style="{StaticResource BaslikStili}"/>
+                    <ComboBox x:Name="cbKomut"
+                              AutomationProperties.AutomationId="cbKomut"
+                              Style="{StaticResource GirisStili}"
+                              Margin="0,2,0,8"/>
+                    <Button x:Name="btnKomutGonder" Content="KOMUT GÖNDER"
+                            AutomationProperties.AutomationId="btnKomutGonder"
+                            Style="{StaticResource AnaButon}"
+                            Click="BtnKomutGonder_Click"
+                            IsEnabled="False"/>
+                </StackPanel>
+            </Border>
+
+            <!-- AYAR GÖNDER -->
+            <Border Grid.Column="1" Style="{StaticResource PanelStili}">
+                <StackPanel>
+                    <TextBlock Text="AYAR GÖNDER" Style="{StaticResource BaslikStili}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Margin="0,0,6,0">
+                            <TextBlock Text="Ayar Tipi" Style="{StaticResource EtiketStili}" Margin="0,0,0,2"/>
+                            <ComboBox x:Name="cbAyar"
+                                      AutomationProperties.AutomationId="cbAyar"
+                                      Style="{StaticResource GirisStili}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Margin="6,0,0,0">
+                            <TextBlock Text="Değer" Style="{StaticResource EtiketStili}" Margin="0,0,0,2"/>
+                            <TextBox x:Name="tbAyarDeger" Text="0.00"
+                                     AutomationProperties.AutomationId="tbAyarDeger"
+                                     Style="{StaticResource GirisStili}"/>
+                        </StackPanel>
+                    </Grid>
+                    <Button x:Name="btnAyarGonder" Content="AYAR GÖNDER"
+                            AutomationProperties.AutomationId="btnAyarGonder"
+                            Style="{StaticResource AnaButon}"
+                            Background="{StaticResource VurguSari}"
+                            Foreground="#1A1300"
+                            Click="BtnAyarGonder_Click"
+                            Margin="0,8,0,0"
+                            IsEnabled="False"/>
+                </StackPanel>
+            </Border>
+
+            <!-- SON GERİ BESLEME -->
+            <Border Grid.Column="2" Style="{StaticResource PanelStili}">
+                <StackPanel>
+                    <TextBlock Text="SON GERİ BESLEME" Style="{StaticResource BaslikStili}"/>
+                    <TextBlock x:Name="txtSonGeriBeslemeTipi" Text="—"
+                               AutomationProperties.AutomationId="txtSonGeriBeslemeTipi"
+                               Style="{StaticResource DegerBuyuk}"
+                               Foreground="{StaticResource VurguMavi}"/>
+                    <TextBlock x:Name="txtSonGeriBeslemeDeger" Text="Değer: —"
+                               AutomationProperties.AutomationId="txtSonGeriBeslemeDeger"
+                               Style="{StaticResource EtiketStili}"
+                               Margin="0,6,0,0"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- TELEMETRİ TABLOLARI -->
+        <Border Grid.Row="2" Style="{StaticResource PanelStili}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="GELEN TELEMETRİ PAKETLERİ"
+                           Style="{StaticResource BaslikStili}"/>
+                <TabControl Grid.Row="1" Margin="0,4,0,0">
+                    <TabItem Header="HABERLEŞME PAKET 1">
+                        <DataGrid x:Name="dgPaket1"
+                                  AutomationProperties.AutomationId="dgPaket1"
+                                  Margin="0,8,0,0"/>
+                    </TabItem>
+                    <TabItem Header="HABERLEŞME PAKET 2">
+                        <DataGrid x:Name="dgPaket2"
+                                  AutomationProperties.AutomationId="dgPaket2"
+                                  Margin="0,8,0,0"/>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </Border>
+
+        <!-- LOGLAMA + OYNATMA + MAT -->
+        <Border Grid.Row="3" Style="{StaticResource PanelStili}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- LOGLAMA -->
+                <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                    <TextBlock Text="CANLI LOGLAMA" Style="{StaticResource BaslikStili}"/>
+                    <TextBlock x:Name="txtLogDurumu" Text="Durum: Loglama kapalı"
+                               AutomationProperties.AutomationId="txtLogDurumu"
+                               Style="{StaticResource EtiketStili}" Margin="0,0,0,4"/>
+                    <TextBlock x:Name="txtLogDosyaYolu" Text=""
+                               Foreground="{StaticResource YumusakYazi}"
+                               FontSize="11" Margin="0,0,0,8"
+                               TextWrapping="Wrap"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="btnLogBaslat" Content="LOG BAŞLAT"
+                                AutomationProperties.AutomationId="btnLogBaslat"
+                                Style="{StaticResource AnaButon}"
+                                Background="{StaticResource VurguYesil}"
+                                Click="BtnLogBaslat_Click"
+                                Margin="0,0,6,0"
+                                IsEnabled="False"/>
+                        <Button x:Name="btnLogDurdur" Content="LOG DURDUR"
+                                AutomationProperties.AutomationId="btnLogDurdur"
+                                Style="{StaticResource AnaButon}"
+                                Background="{StaticResource VurguKirmizi}"
+                                Click="BtnLogDurdur_Click"
+                                IsEnabled="False"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- OYNATMA -->
+                <StackPanel Grid.Column="1" Margin="8,0">
+                    <TextBlock Text="LOG OYNATMA" Style="{StaticResource BaslikStili}"/>
+                    <TextBlock x:Name="txtOynatmaDosyasi" Text="Dosya seçilmedi"
+                               AutomationProperties.AutomationId="txtOynatmaDosyasi"
+                               Style="{StaticResource EtiketStili}"
+                               TextWrapping="Wrap" Margin="0,0,0,8"/>
+                    <TextBlock x:Name="txtOynatmaIlerleme" Text="—"
+                               AutomationProperties.AutomationId="txtOynatmaIlerleme"
+                               Style="{StaticResource EtiketStili}" Margin="0,0,0,8"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="btnLogYukle" Content="DOSYA SEÇ"
+                                AutomationProperties.AutomationId="btnLogYukle"
+                                Style="{StaticResource AnaButon}"
+                                Background="#475569"
+                                Click="BtnLogYukle_Click"
+                                Margin="0,0,6,0"/>
+                        <Button x:Name="btnLogOynat" Content="OYNAT"
+                                AutomationProperties.AutomationId="btnLogOynat"
+                                Style="{StaticResource AnaButon}"
+                                Click="BtnLogOynat_Click"
+                                Margin="0,0,6,0"
+                                IsEnabled="False"/>
+                        <Button x:Name="btnLogOynatDurdur" Content="DURDUR"
+                                AutomationProperties.AutomationId="btnLogOynatDurdur"
+                                Style="{StaticResource AnaButon}"
+                                Background="{StaticResource VurguKirmizi}"
+                                Click="BtnLogOynatDurdur_Click"
+                                IsEnabled="False"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- MATLAB DÖNÜŞTÜR -->
+                <StackPanel Grid.Column="2" Margin="8,0,0,0">
+                    <TextBlock Text="MATLAB DÖNÜŞÜMÜ" Style="{StaticResource BaslikStili}"/>
+                    <TextBlock x:Name="txtMatDurumu"
+                               Text="Yukarıdaki 'DOSYA SEÇ' ile bir log seç, sonra dönüştür."
+                               AutomationProperties.AutomationId="txtMatDurumu"
+                               Style="{StaticResource EtiketStili}"
+                               TextWrapping="Wrap" Margin="0,0,0,8"/>
+                    <Button x:Name="btnMatDonustur" Content="MAT'A DÖNÜŞTÜR"
+                            AutomationProperties.AutomationId="btnMatDonustur"
+                            Style="{StaticResource AnaButon}"
+                            Background="{StaticResource VurguSari}"
+                            Foreground="#1A1300"
+                            Click="BtnMatDonustur_Click"
+                            HorizontalAlignment="Left"
+                            IsEnabled="False"/>
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
