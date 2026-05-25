@@ -1,5 +1,6 @@
 ﻿using KullaniciArayuzu.Haberlesme;
 using KullaniciArayuzu.Modeller;
+using KullaniciArayuzu.Test;
 using Microsoft.Win32;
 using OrtakKutuphane.Enumlar;
 using OrtakKutuphane.Haberlesme;
@@ -138,6 +139,24 @@ public partial class MainWindow : Window
         btnAyarGonder.IsEnabled = false;
         btnLogBaslat.IsEnabled = false;
         BtnLogDurdur_Click(sender, e);
+    }
+
+    // Otonom test motorunu ayrı bir pencerede açar; UI Automation ana pencereye uygulanır.
+    private void BtnOtonomTest_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            var pencere = new TestPenceresi(this, _istemci)
+            {
+                Owner = this
+            };
+            pencere.Show();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Test motoru başlatılamadı:\n{ex.Message}",
+                "Hata", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 
     #endregion

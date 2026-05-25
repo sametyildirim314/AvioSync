@@ -4,6 +4,10 @@
     <ProjectReference Include="..\OrtakKutuphane\OrtakKutuphane.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="PDFsharp" Version="6.2.4" />
+  </ItemGroup>
+
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net10.0-windows</TargetFramework>
@@ -11,5 +15,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
+
+  <!-- Varsayılan test scripti exe yanındaki Release/Test klasörüne kopyalanır. -->
+  <ItemGroup>
+    <None Include="Release\Test\test_script.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>

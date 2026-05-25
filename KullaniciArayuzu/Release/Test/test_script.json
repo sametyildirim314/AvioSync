@@ -1,0 +1,62 @@
+﻿{
+  "TestAdi": "AvioSync - Temel Haberleşme Senaryosu",
+  "Aciklama": "Aviyonik simülasyon ile kullanıcı arayüzü arasındaki haberleşmenin doğruluğunu uçtan uca doğrular. Bu senaryo başlatılmadan önce SimulasyonArayuzu uygulamasının çalışıyor ve 'BAŞLAT' ile telemetri yayını yapıyor olması beklenir.",
+  "Adimlar": [
+    {
+      "Tip": "BaglantiyiBaslat",
+      "Aciklama": "Kullanıcı arayüzü 'BAĞLAN' butonuna basılır; UDP dinleyici açılır."
+    },
+    {
+      "Tip": "Bekle",
+      "Aciklama": "Aviyonik telemetrisinin akmaya başlaması için kısa bekleme.",
+      "BeklemeSaniye": 1.5
+    },
+    {
+      "Tip": "TelemetriAkisiniDogrula",
+      "Aciklama": "5 saniye içinde en az 30 doğru paket (Paket1 + Paket2) ulaşmalı.",
+      "BeklemeSaniye": 5.0,
+      "MinimumDogruPaket": 30
+    },
+    {
+      "Tip": "KomutGonder",
+      "Aciklama": "SistemAc komutu gönderilir, geri besleme paketi beklenir.",
+      "Komut": "SistemAc",
+      "BeklemeSaniye": 1.5
+    },
+    {
+      "Tip": "KomutGonder",
+      "Aciklama": "TelemetriBaslat komutu gönderilir.",
+      "Komut": "TelemetriBaslat",
+      "BeklemeSaniye": 1.5
+    },
+    {
+      "Tip": "AyarGonder",
+      "Aciklama": "İrtifa ayarı 1500 metre olarak gönderilir.",
+      "Ayar": "IrtifaAyari",
+      "Deger": 1500.0,
+      "BeklemeSaniye": 1.5
+    },
+    {
+      "Tip": "AyarGonder",
+      "Aciklama": "Hız ayarı 250 km/sa olarak gönderilir.",
+      "Ayar": "HizAyari",
+      "Deger": 250.5,
+      "BeklemeSaniye": 1.5
+    },
+    {
+      "Tip": "AyarGonder",
+      "Aciklama": "Sıcaklık ayarı 22.5 santigrat olarak gönderilir.",
+      "Ayar": "SicaklikAyari",
+      "Deger": 22.5,
+      "BeklemeSaniye": 1.5
+    },
+    {
+      "Tip": "HataliPaketYok",
+      "Aciklama": "Test boyunca hatalı paket sayacı 0 olmalıdır."
+    },
+    {
+      "Tip": "BaglantiyiKes",
+      "Aciklama": "Test sonunda kullanıcı arayüzü bağlantısı kapatılır."
+    }
+  ]
+}

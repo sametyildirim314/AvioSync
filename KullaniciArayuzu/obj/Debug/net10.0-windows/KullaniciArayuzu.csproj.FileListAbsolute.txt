@@ -23,3 +23,17 @@ C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\o
 C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\obj\Debug\net10.0-windows\KullaniciArayuzu.genruntimeconfig.cache
 C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\obj\Debug\net10.0-windows\ref\KullaniciArayuzu.dll
 C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\obj\Debug\net10.0-windows\KullaniciArayuzu.sourcelink.json
+C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\bin\Debug\net10.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\bin\Debug\net10.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\bin\Debug\net10.0-windows\PdfSharp.BarCodes.dll
+C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\bin\Debug\net10.0-windows\PdfSharp.Charting.dll
+C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\bin\Debug\net10.0-windows\PdfSharp.Cryptography.dll
+C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\bin\Debug\net10.0-windows\PdfSharp.Quality.dll
+C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\bin\Debug\net10.0-windows\PdfSharp.Shared.dll
+C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\bin\Debug\net10.0-windows\PdfSharp.Snippets.dll
+C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\bin\Debug\net10.0-windows\PdfSharp.System.dll
+C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\bin\Debug\net10.0-windows\PdfSharp.WPFonts.dll
+C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\bin\Debug\net10.0-windows\PdfSharp.dll
+C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\bin\Debug\net10.0-windows\Release\Test\test_script.json
+C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\obj\Debug\net10.0-windows\Test\TestPenceresi.baml
+C:\Users\Samet Yıldırımçakar\OneDrive\Masaüstü\AvioSync\KullaniciArayuzu\obj\Debug\net10.0-windows\Test\TestPenceresi.g.cs

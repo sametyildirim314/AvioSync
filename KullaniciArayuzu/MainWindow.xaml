@@ -225,7 +225,13 @@
                             AutomationProperties.AutomationId="btnKes"
                             Style="{StaticResource AnaButon}"
                             Background="{StaticResource VurguKirmizi}"
-                            Click="BtnKes_Click" IsEnabled="False"/>
+                            Click="BtnKes_Click" IsEnabled="False"
+                            Margin="0,0,6,0"/>
+                    <Button x:Name="btnOtonomTest" Content="OTONOM TEST"
+                            AutomationProperties.AutomationId="btnOtonomTest"
+                            Style="{StaticResource AnaButon}"
+                            Background="#7C3AED"
+                            Click="BtnOtonomTest_Click"/>
                 </StackPanel>
             </Grid>
         </Border>

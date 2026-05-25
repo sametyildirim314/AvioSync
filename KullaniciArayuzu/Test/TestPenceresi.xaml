@@ -1,0 +1,202 @@
+﻿<Window x:Class="KullaniciArayuzu.Test.TestPenceresi"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="AvioSync - Otonom Test Motoru"
+        Height="700" Width="980"
+        MinHeight="600" MinWidth="900"
+        WindowStartupLocation="CenterOwner"
+        Background="#0E1726"
+        FontFamily="Segoe UI"
+        Foreground="#E6EDF3">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="PanelArkaPlan"  Color="#152234"/>
+        <SolidColorBrush x:Key="PanelKenar"     Color="#22304A"/>
+        <SolidColorBrush x:Key="VurguMavi"      Color="#3D8BFD"/>
+        <SolidColorBrush x:Key="VurguYesil"     Color="#22C55E"/>
+        <SolidColorBrush x:Key="VurguKirmizi"   Color="#EF4444"/>
+        <SolidColorBrush x:Key="VurguSari"      Color="#FACC15"/>
+        <SolidColorBrush x:Key="YumusakYazi"    Color="#94A3B8"/>
+        <SolidColorBrush x:Key="GirisArkaPlan"  Color="#0B1422"/>
+
+        <Style x:Key="PanelStili" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource PanelArkaPlan}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PanelKenar}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="12"/>
+            <Setter Property="Margin" Value="6"/>
+        </Style>
+
+        <Style x:Key="BaslikStili" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource YumusakYazi}"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,0,0,6"/>
+        </Style>
+
+        <Style x:Key="AnaButon" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource VurguMavi}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="12,7"/>
+            <Setter Property="MinHeight" Value="32"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="kenar" Background="{TemplateBinding Background}"
+                                CornerRadius="6"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="kenar" Property="Opacity" Value="0.85"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="kenar" Property="Opacity" Value="0.4"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- BAŞLIK -->
+        <Border Grid.Row="0" Style="{StaticResource PanelStili}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="OTONOM TEST MOTORU"
+                               FontSize="18" FontWeight="Bold"
+                               Foreground="{StaticResource VurguMavi}"/>
+                    <TextBlock Text="Kullanıcı arayüzündeki butonlar AutomationId üzerinden UI Automation API ile tetiklenir."
+                               Foreground="{StaticResource YumusakYazi}"
+                               FontSize="12" Margin="0,4,0,0"
+                               TextWrapping="Wrap"/>
+                </StackPanel>
+                <Button Grid.Column="1" x:Name="btnKapat" Content="KAPAT"
+                        Style="{StaticResource AnaButon}"
+                        Background="#475569"
+                        Click="BtnKapat_Click"
+                        VerticalAlignment="Top"/>
+            </Grid>
+        </Border>
+
+        <!-- SCRIPT VE BUTONLAR -->
+        <Border Grid.Row="1" Style="{StaticResource PanelStili}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="TEST SCRIPT DOSYASI" Style="{StaticResource BaslikStili}"/>
+                    <TextBlock x:Name="txtScriptYolu" Text="Henüz dosya yüklenmedi."
+                               Foreground="#E6EDF3" FontSize="12" TextWrapping="Wrap"
+                               Margin="0,0,0,6"/>
+                    <TextBlock x:Name="txtScriptOzet" Text=""
+                               Foreground="{StaticResource YumusakYazi}" FontSize="11"
+                               TextWrapping="Wrap"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button x:Name="btnScriptYukle" Content="SCRIPT SEÇ"
+                            Style="{StaticResource AnaButon}"
+                            Background="#475569"
+                            Click="BtnScriptYukle_Click" Margin="0,0,6,0"/>
+                    <Button x:Name="btnTestCalistir" Content="TESTİ ÇALIŞTIR"
+                            Style="{StaticResource AnaButon}"
+                            Background="{StaticResource VurguYesil}"
+                            Click="BtnTestCalistir_Click"
+                            Margin="0,0,6,0"
+                            IsEnabled="False"/>
+                    <Button x:Name="btnTestDurdur" Content="DURDUR"
+                            Style="{StaticResource AnaButon}"
+                            Background="{StaticResource VurguKirmizi}"
+                            Click="BtnTestDurdur_Click"
+                            IsEnabled="False"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- ADIM TABLOSU -->
+        <Border Grid.Row="2" Style="{StaticResource PanelStili}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="ADIM SONUÇLARI" Style="{StaticResource BaslikStili}"/>
+                <DataGrid x:Name="dgSonuclar" Grid.Row="1"
+                          Background="{StaticResource GirisArkaPlan}"
+                          Foreground="#E6EDF3"
+                          BorderBrush="{StaticResource PanelKenar}"
+                          GridLinesVisibility="Horizontal"
+                          HorizontalGridLinesBrush="#1F2C44"
+                          RowBackground="#0F1B2D"
+                          AlternatingRowBackground="#142235"
+                          HeadersVisibility="Column"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False"
+                          SelectionMode="Single">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="#" Binding="{Binding SiraNo}" Width="50"/>
+                        <DataGridTextColumn Header="Durum" Binding="{Binding DurumYazisi}" Width="100"/>
+                        <DataGridTextColumn Header="Adım" Binding="{Binding AdimOzeti}" Width="*"/>
+                        <DataGridTextColumn Header="Süre (sn)" Binding="{Binding SureSn}" Width="90"/>
+                        <DataGridTextColumn Header="Mesaj" Binding="{Binding Mesaj}" Width="280"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+
+        <!-- ÖZET + PDF -->
+        <Border Grid.Row="3" Style="{StaticResource PanelStili}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <TextBlock x:Name="txtOzet"
+                               Text="Henüz test çalıştırılmadı."
+                               FontSize="14" FontWeight="SemiBold"
+                               Foreground="#E6EDF3"/>
+                    <TextBlock x:Name="txtPdfYolu" Text=""
+                               Foreground="{StaticResource YumusakYazi}" FontSize="11"
+                               Margin="0,4,0,0" TextWrapping="Wrap"/>
+                </StackPanel>
+
+                <Button Grid.Column="1" x:Name="btnPdfAc" Content="PDF'İ AÇ"
+                        Style="{StaticResource AnaButon}"
+                        Background="{StaticResource VurguSari}"
+                        Foreground="#1A1300"
+                        Click="BtnPdfAc_Click"
+                        IsEnabled="False"
+                        VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
